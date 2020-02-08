@@ -20,16 +20,16 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 /**
- * PetClinic Spring Boot Application.
+ * MedicalClinic Spring Boot Application.
  *
- * @author Dave Syer
+ * @author Ermir Metani Mikel Mata
  *
  */
 @SpringBootApplication(proxyBeanMethods = false)
-public class PetClinicApplication {
+public class MedicalClinicApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(PetClinicApplication.class, args);
+		SpringApplication.run(MedicalClinicApplication.class, args);
 	}
 
 }

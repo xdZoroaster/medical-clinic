@@ -16,6 +16,7 @@
 package org.springframework.samples.petclinic.visit;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -36,8 +37,8 @@ import org.springframework.samples.petclinic.model.BaseEntity;
 public class Visit extends BaseEntity {
 
 	@Column(name = "visit_date")
-	@DateTimeFormat(pattern = "yyyy-MM-dd")
-	private LocalDate date;
+	@DateTimeFormat(pattern = "yyyy-MM-dd HH:mm", iso = DateTimeFormat.ISO.DATE_TIME)
+	private LocalDateTime date;
 
 	@NotEmpty
 	@Column(name = "description")
@@ -50,14 +51,14 @@ public class Visit extends BaseEntity {
 	 * Creates a new instance of Visit for the current date
 	 */
 	public Visit() {
-		this.date = LocalDate.now();
+		this.date = LocalDateTime.now();
 	}
 
-	public LocalDate getDate() {
+	public LocalDateTime getDate() {
 		return this.date;
 	}
 
-	public void setDate(LocalDate date) {
+	public void setDate(LocalDateTime date) {
 		this.date = date;
 	}
 

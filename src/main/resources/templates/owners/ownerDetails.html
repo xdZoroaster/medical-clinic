@@ -15,7 +15,7 @@
         <td><b th:text="*{firstName + ' ' + lastName}"></b></td>
       </tr>
       <tr>
-        <th>Address</th>
+        <th>Specializmi</th>
         <td th:text="*{address}" /></td>
       </tr>
       <tr>
@@ -29,14 +29,14 @@
     </table>
   
     <a th:href="@{{id}/edit(id=${owner.id})}" class="btn btn-default">Edit
-      Owner</a>
+      owner</a>
     <a th:href="@{{id}/pets/new(id=${owner.id})}" class="btn btn-default">Add
-      New Pet</a>
+      New Pacient</a>
   
     <br />
     <br />
     <br />
-    <h2>Pets and Visits</h2>
+    <h2>Pacients and Visits</h2>
   
     <table class="table table-striped">
   
@@ -48,7 +48,7 @@
             <dt>Birth Date</dt>
             <dd
               th:text="${#temporals.format(pet.birthDate, 'yyyy-MM-dd')}" /></dd>
-            <dt>Type</dt>
+            <dt>Gender</dt>
             <dd th:text="${pet.type}" /></dd>
           </dl>
         </td>
@@ -61,13 +61,13 @@
               </tr>
             </thead>
             <tr th:each="visit : ${pet.visits}">
-              <td th:text="${#temporals.format(visit.date, 'yyyy-MM-dd')}"></td>
+              <td th:text="${#temporals.format(visit.date, 'yyyy-MM-dd HH:mm')}"></td>
               <td th:text="${visit?.description}"></td>
             </tr>
             <tr>
               <td><a
                 th:href="@{{ownerId}/pets/{petId}/edit(ownerId=${owner.id},petId=${pet.id})}">Edit
-                  Pet</a></td>
+                  Pacient</a></td>
               <td><a
                 th:href="@{{ownerId}/pets/{petId}/visits/new(ownerId=${owner.id},petId=${pet.id})}">Add
                   Visit</a></td>

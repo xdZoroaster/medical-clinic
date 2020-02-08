@@ -38,7 +38,7 @@ import org.springframework.samples.petclinic.model.NamedEntity;
 import org.springframework.samples.petclinic.visit.Visit;
 
 /**
- * Simple business object representing a pet.
+ * Simple business object representing a patients.
  *
  * @author Ken Krebs
  * @author Juergen Hoeller
@@ -53,7 +53,7 @@ public class Pet extends NamedEntity {
 	private LocalDate birthDate;
 
 	@ManyToOne
-	@JoinColumn(name = "type_id")
+	@JoinColumn(name = "gender_id")
 	private PetType type;
 
 	@ManyToOne

@@ -48,7 +48,7 @@ public interface PetRepository extends Repository<Pet, Integer> {
 	 * @return the {@link Pet} if found
 	 */
 	@Transactional(readOnly = true)
-	Pet findById(Integer id);
+    Pet findById(Integer id);
 
 	/**
 	 * Save a {@link Pet} to the data store, either inserting or updating it.

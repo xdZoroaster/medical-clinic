@@ -102,7 +102,7 @@ class OwnerController {
 		else {
 			// multiple owners found
 			model.put("selections", results);
-			return "owners/ownersList";
+			return "owners/ownerList";
 		}
 	}
 
@@ -115,7 +115,7 @@ class OwnerController {
 
 	@PostMapping("/owners/{ownerId}/edit")
 	public String processUpdateOwnerForm(@Valid Owner owner, BindingResult result,
-			@PathVariable("ownerId") int ownerId) {
+                                         @PathVariable("ownerId") int ownerId) {
 		if (result.hasErrors()) {
 			return VIEWS_OWNER_CREATE_OR_UPDATE_FORM;
 		}
@@ -127,7 +127,7 @@ class OwnerController {
 	}
 
 	/**
-	 * Custom handler for displaying an owner.
+	 * Custom handler for displaying a owner.
 	 * @param ownerId the ID of the owner to display
 	 * @return a ModelMap with the model attributes for the view
 	 */

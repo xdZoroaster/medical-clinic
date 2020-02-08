@@ -65,7 +65,12 @@
             </exclusion>
         </exclusions>
     </dependency>
-
+      <!-- MSSQL DB-->
+      <dependency>
+          <groupId>com.microsoft.sqlserver</groupId>
+          <artifactId>mssql-jdbc</artifactId>
+          <version>7.4.1.jre11</version>
+      </dependency>
     <!-- Databases - Uses HSQL by default -->
     <dependency>
       <groupId>org.hsqldb</groupId>
@@ -131,11 +136,11 @@
 
   <build>
     <plugins>
-      <plugin>
+      <!--<plugin>
         <groupId>io.spring.javaformat</groupId>
         <artifactId>spring-javaformat-maven-plugin</artifactId>
         <version>${spring-format.version}</version>
-        <!-- run ./mvnw spring-javaformat:apply to apply -->
+        &lt;!&ndash; run ./mvnw spring-javaformat:apply to apply &ndash;&gt;
         <executions>
           <execution>
             <phase>validate</phase>
@@ -144,7 +149,7 @@
             </goals>
           </execution>
         </executions>
-      </plugin>
+      </plugin>-->
       <plugin>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-maven-plugin</artifactId>
