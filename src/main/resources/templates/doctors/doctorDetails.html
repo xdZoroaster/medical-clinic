@@ -1,15 +1,15 @@
 <!DOCTYPE html>
 
 <html xmlns:th="https://www.thymeleaf.org"
-  th:replace="~{fragments/layout :: layout (~{::body},'owners')}">
+  th:replace="~{fragments/layout :: layout (~{::body},'doctors')}">
 
   <body>
   
   
-    <h2>Owner Information</h2>
+    <h2>Doctor Information</h2>
   
   
-    <table class="table table-striped" th:object="${owner}">
+    <table class="table table-striped" th:object="${doctor}">
       <tr>
         <th>Name</th>
         <td><b th:text="*{firstName + ' ' + lastName}"></b></td>
@@ -28,28 +28,28 @@
       </tr>
     </table>
   
-    <a th:href="@{{id}/edit(id=${owner.id})}" class="btn btn-default">Edit
-      owner</a>
-    <a th:href="@{{id}/pets/new(id=${owner.id})}" class="btn btn-default">Add
-      New Pacient</a>
+    <a th:href="@{{id}/edit(id=${doctor.id})}" class="btn btn-default">Edit
+      doctor</a>
+    <a th:href="@{{id}/patients/new(id=${doctor.id})}" class="btn btn-default">Add
+      New Patient</a>
   
     <br />
     <br />
     <br />
-    <h2>Pacients and Visits</h2>
+    <h2>Patients and Visits</h2>
   
     <table class="table table-striped">
   
-      <tr th:each="pet : ${owner.pets}">
+      <tr th:each="patient : ${doctor.patients}">
         <td valign="top">
           <dl class="dl-horizontal">
             <dt>Name</dt>
-            <dd th:text="${pet.name}" /></dd>
+            <dd th:text="${patient.name}" /></dd>
             <dt>Birth Date</dt>
             <dd
-              th:text="${#temporals.format(pet.birthDate, 'yyyy-MM-dd')}" /></dd>
+              th:text="${#temporals.format(patient.birthDate, 'yyyy-MM-dd')}" /></dd>
             <dt>Gender</dt>
-            <dd th:text="${pet.type}" /></dd>
+            <dd th:text="${patient.type}" /></dd>
           </dl>
         </td>
         <td valign="top">
@@ -60,16 +60,16 @@
                 <th>Description</th>
               </tr>
             </thead>
-            <tr th:each="visit : ${pet.visits}">
+            <tr th:each="visit : ${patient.visits}">
               <td th:text="${#temporals.format(visit.date, 'yyyy-MM-dd HH:mm')}"></td>
               <td th:text="${visit?.description}"></td>
             </tr>
             <tr>
               <td><a
-                th:href="@{{ownerId}/pets/{petId}/edit(ownerId=${owner.id},petId=${pet.id})}">Edit
-                  Pacient</a></td>
+                th:href="@{{ownerId}/patients/{patientId}/edit(ownerId=${doctor.id},patientId=${patient.id})}">Edit
+                  Patient</a></td>
               <td><a
-                th:href="@{{ownerId}/pets/{petId}/visits/new(ownerId=${owner.id},petId=${pet.id})}">Add
+                th:href="@{{ownerId}/patients/{patientId}/visits/new(ownerId=${doctor.id},patientId=${patient.id})}">Add
                   Visit</a></td>
             </tr>
           </table>

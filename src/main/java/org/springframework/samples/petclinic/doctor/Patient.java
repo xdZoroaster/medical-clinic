@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.springframework.samples.petclinic.owner;
+package org.springframework.samples.petclinic.doctor;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -37,16 +37,9 @@ import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.samples.petclinic.model.NamedEntity;
 import org.springframework.samples.petclinic.visit.Visit;
 
-/**
- * Simple business object representing a patients.
- *
- * @author Ken Krebs
- * @author Juergen Hoeller
- * @author Sam Brannen
- */
 @Entity
-@Table(name = "pets")
-public class Pet extends NamedEntity {
+@Table(name = "patients")
+public class Patient extends NamedEntity {
 
 	@Column(name = "birth_date")
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
@@ -54,11 +47,11 @@ public class Pet extends NamedEntity {
 
 	@ManyToOne
 	@JoinColumn(name = "gender_id")
-	private PetType type;
+	private Gender type;
 
 	@ManyToOne
-	@JoinColumn(name = "owner_id")
-	private Owner owner;
+	@JoinColumn(name = "doctor_id")
+	private Doctor doctor;
 
 	@Transient
 	private Set<Visit> visits = new LinkedHashSet<>();
@@ -71,20 +64,20 @@ public class Pet extends NamedEntity {
 		return this.birthDate;
 	}
 
-	public PetType getType() {
+	public Gender getType() {
 		return this.type;
 	}
 
-	public void setType(PetType type) {
+	public void setType(Gender type) {
 		this.type = type;
 	}
 
-	public Owner getOwner() {
-		return this.owner;
+	public Doctor getDoctor() {
+		return this.doctor;
 	}
 
-	protected void setOwner(Owner owner) {
-		this.owner = owner;
+	protected void setDoctor(Doctor doctor) {
+		this.doctor = doctor;
 	}
 
 	protected Set<Visit> getVisitsInternal() {
@@ -106,7 +99,7 @@ public class Pet extends NamedEntity {
 
 	public void addVisit(Visit visit) {
 		getVisitsInternal().add(visit);
-		visit.setPetId(this.getId());
+		visit.setPatientId(this.getId());
 	}
 
 }

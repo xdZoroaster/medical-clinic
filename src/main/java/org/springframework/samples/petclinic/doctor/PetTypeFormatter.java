@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.springframework.samples.petclinic.owner;
+package org.springframework.samples.petclinic.doctor;
 
 import java.text.ParseException;
 import java.util.Collection;
@@ -24,7 +24,7 @@ import org.springframework.format.Formatter;
 import org.springframework.stereotype.Component;
 
 /**
- * Instructs Spring MVC on how to parse and print elements of type 'PetType'. Starting
+ * Instructs Spring MVC on how to parse and print elements of type 'Gender'. Starting
  * from Spring 3.0, Formatters have come as an improvement in comparison to legacy
  * PropertyEditors. See the following links for more details: - The Spring ref doc:
  * https://docs.spring.io/spring-framework/docs/current/spring-framework-reference/core.html#format
@@ -34,24 +34,24 @@ import org.springframework.stereotype.Component;
  * @author Michael Isvy
  */
 @Component
-public class PetTypeFormatter implements Formatter<PetType> {
+public class PetTypeFormatter implements Formatter<Gender> {
 
-	private final PetRepository pets;
+	private final PatientRepository pets;
 
 	@Autowired
-	public PetTypeFormatter(PetRepository pets) {
+	public PetTypeFormatter(PatientRepository pets) {
 		this.pets = pets;
 	}
 
 	@Override
-	public String print(PetType petType, Locale locale) {
+	public String print(Gender petType, Locale locale) {
 		return petType.getName();
 	}
 
 	@Override
-	public PetType parse(String text, Locale locale) throws ParseException {
-		Collection<PetType> findPetTypes = this.pets.findPetTypes();
-		for (PetType type : findPetTypes) {
+	public Gender parse(String text, Locale locale) throws ParseException {
+		Collection<Gender> findPetTypes = this.pets.findGenderTypes();
+		for (Gender type : findPetTypes) {
 			if (type.getName().equals(text)) {
 				return type;
 			}

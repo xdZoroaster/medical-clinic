@@ -15,7 +15,6 @@
  */
 package org.springframework.samples.petclinic.visit;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 import javax.persistence.Column;
@@ -44,8 +43,8 @@ public class Visit extends BaseEntity {
 	@Column(name = "description")
 	private String description;
 
-	@Column(name = "pet_id")
-	private Integer petId;
+	@Column(name = "patient_id")
+	private Integer patientId;
 
 	/**
 	 * Creates a new instance of Visit for the current date
@@ -70,12 +69,12 @@ public class Visit extends BaseEntity {
 		this.description = description;
 	}
 
-	public Integer getPetId() {
-		return this.petId;
+	public Integer getPatientId() {
+		return this.patientId;
 	}
 
-	public void setPetId(Integer petId) {
-		this.petId = petId;
+	public void setPatientId(Integer patientId) {
+		this.patientId = patientId;
 	}
 
 }

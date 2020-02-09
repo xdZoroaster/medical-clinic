@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.springframework.samples.petclinic.owner;
+package org.springframework.samples.petclinic.doctor;
 
 import java.util.Map;
 
@@ -30,23 +30,16 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
-/**
- * @author Juergen Hoeller
- * @author Ken Krebs
- * @author Arjen Poutsma
- * @author Michael Isvy
- * @author Dave Syer
- */
 @Controller
 class VisitController {
 
 	private final VisitRepository visits;
 
-	private final PetRepository pets;
+	private final PatientRepository patients;
 
-	public VisitController(VisitRepository visits, PetRepository pets) {
+	public VisitController(VisitRepository visits, PatientRepository patients) {
 		this.visits = visits;
-		this.pets = pets;
+		this.patients = patients;
 	}
 
 	@InitBinder
@@ -57,35 +50,35 @@ class VisitController {
 	/**
 	 * Called before each and every @RequestMapping annotated method. 2 goals: - Make sure
 	 * we always have fresh data - Since we do not use the session scope, make sure that
-	 * Pet object always has an id (Even though id is not part of the form fields)
-	 * @param petId
-	 * @return Pet
+	 * Patient object always has an id (Even though id is not part of the form fields)
+	 * @param patientId
+	 * @return Patient
 	 */
 	@ModelAttribute("visit")
-	public Visit loadPetWithVisit(@PathVariable("petId") int petId, Map<String, Object> model) {
-		Pet pet = this.pets.findById(petId);
-		pet.setVisitsInternal(this.visits.findByPetId(petId));
-		model.put("pet", pet);
+	public Visit loadPatientWithVisit(@PathVariable("patientId") int patientId, Map<String, Object> model) {
+		Patient patient = this.patients.findById(patientId);
+		patient.setVisitsInternal(this.visits.findByPatientId(patientId));
+		model.put("patient", patient);
 		Visit visit = new Visit();
-		pet.addVisit(visit);
+		patient.addVisit(visit);
 		return visit;
 	}
 
-	// Spring MVC calls method loadPetWithVisit(...) before initNewVisitForm is called
-	@GetMapping("/owners/*/pets/{petId}/visits/new")
-	public String initNewVisitForm(@PathVariable("petId") int petId, Map<String, Object> model) {
-		return "pets/createOrUpdateVisitForm";
+	// Spring MVC calls method loadPatientWithVisit(...) before initNewVisitForm is called
+	@GetMapping("/doctors/*/patients/{patientId}/visits/new")
+	public String initNewVisitForm(@PathVariable("patientId") int patientId, Map<String, Object> model) {
+		return "patients/createOrUpdateVisitForm";
 	}
 
-	// Spring MVC calls method loadPetWithVisit(...) before processNewVisitForm is called
-	@PostMapping("/owners/{ownerId}/pets/{petId}/visits/new")
+	// Spring MVC calls method loadPatientWithVisit(...) before processNewVisitForm is called
+	@PostMapping("/doctors/{doctorId}/patients/{patientId}/visits/new")
 	public String processNewVisitForm(@Valid Visit visit, BindingResult result) {
 		if (result.hasErrors()) {
-			return "pets/createOrUpdateVisitForm";
+			return "patients/createOrUpdateVisitForm";
 		}
 		else {
 			this.visits.save(visit);
-			return "redirect:/owners/{ownerId}";
+			return "redirect:/doctors/{doctorId}";
 		}
 	}
 

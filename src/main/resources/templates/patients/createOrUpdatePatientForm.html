@@ -1,19 +1,19 @@
 <html xmlns:th="https://www.thymeleaf.org"
-  th:replace="~{fragments/layout :: layout (~{::body},'owners')}">
+  th:replace="~{fragments/layout :: layout (~{::body},'doctors')}">
 
 <body>
 
   <h2>
-    <th:block th:if="${pet['new']}">New </th:block>
+    <th:block th:if="${patient['new']}">New </th:block>
     Pet
   </h2>
-  <form th:object="${pet}" class="form-horizontal" method="post">
+  <form th:object="${patient}" class="form-horizontal" method="post">
     <input type="hidden" name="id" th:value="*{id}" />
     <div class="form-group has-feedback">
       <div class="form-group">
         <label class="col-sm-2 control-label">Doctor</label>
         <div class="col-sm-10">
-          <span th:text="${pet.owner?.firstName + ' ' + pet.owner?.lastName}" />
+          <span th:text="${patient.doctor?.firstName + ' ' + patient.doctor?.lastName}" />
         </div>
       </div>
       <input
@@ -26,7 +26,7 @@
     <div class="form-group">
       <div class="col-sm-offset-2 col-sm-10">
         <button
-          th:with="text=${pet['new']} ? 'Add Pet' : 'Update Pet'"
+          th:with="text=${patient['new']} ? 'Add Pet' : 'Update Pet'"
           class="btn btn-default" type="submit" th:text="${text}">Add
           Pacient</button>
       </div>
