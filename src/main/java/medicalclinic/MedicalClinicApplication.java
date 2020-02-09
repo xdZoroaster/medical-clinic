@@ -14,7 +14,23 @@
  * limitations under the License.
  */
 
+package medicalclinic;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.Profile;
+
 /**
- * The classes in this package represent utilities used by the domain.
+ * MedicalClinic Spring Boot Application.
+ *
+ * @author Ermir Metani Mikel Mata
+ *
  */
-package org.springframework.samples.petclinic.model;
+@SpringBootApplication(proxyBeanMethods = false)
+public class MedicalClinicApplication {
+
+	public static void main(String[] args) {
+		SpringApplication.run(MedicalClinicApplication.class, args);
+	}
+
+}

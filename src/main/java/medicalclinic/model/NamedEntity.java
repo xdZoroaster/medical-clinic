@@ -13,32 +13,28 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.springframework.samples.petclinic.model;
+package medicalclinic.model;
 
-import java.io.Serializable;
-
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.Column;
 import javax.persistence.MappedSuperclass;
 
 @MappedSuperclass
-public class BaseEntity implements Serializable {
+public class NamedEntity extends BaseEntity {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+	@Column(name = "name")
+	private String name;
 
-    public Integer getId() {
-        return id;
-    }
+	public String getName() {
+		return this.name;
+	}
 
-    public void setId(Integer id) {
-        this.id = id;
-    }
+	public void setName(String name) {
+		this.name = name;
+	}
 
-    public boolean isNew() {
-        return this.id == null;
-    }
+	@Override
+	public String toString() {
+		return this.getName();
+	}
 
 }

@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.springframework.samples.petclinic.doctor;
+package medicalclinic.doctor;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -32,7 +32,7 @@ import javax.validation.constraints.NotEmpty;
 import org.springframework.beans.support.MutableSortDefinition;
 import org.springframework.beans.support.PropertyComparator;
 import org.springframework.core.style.ToStringCreator;
-import org.springframework.samples.petclinic.model.Person;
+import medicalclinic.model.Person;
 
 
 @Entity
@@ -103,12 +103,7 @@ public class Doctor extends Person {
         patient.setDoctor(this);
     }
 
-    /**
-     * Return the Patient with the given name, or null if none found for this Doctor.
-     *
-     * @param name to test
-     * @return true if pet name is already in use
-     */
+
     public Patient getPatient(String name) {
         return getPatient(name, false);
     }

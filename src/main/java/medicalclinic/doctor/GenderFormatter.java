@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.springframework.samples.petclinic.doctor;
+package medicalclinic.doctor;
 
 import java.text.ParseException;
 import java.util.Collection;
@@ -34,29 +34,29 @@ import org.springframework.stereotype.Component;
  * @author Michael Isvy
  */
 @Component
-public class PetTypeFormatter implements Formatter<Gender> {
+public class GenderFormatter implements Formatter<Gender> {
 
-	private final PatientRepository pets;
+	private final PatientRepository patients;
 
 	@Autowired
-	public PetTypeFormatter(PatientRepository pets) {
-		this.pets = pets;
+	public GenderFormatter(PatientRepository patients) {
+		this.patients = patients;
 	}
 
 	@Override
-	public String print(Gender petType, Locale locale) {
-		return petType.getName();
+	public String print(Gender gender, Locale locale) {
+		return gender.getName();
 	}
 
 	@Override
 	public Gender parse(String text, Locale locale) throws ParseException {
-		Collection<Gender> findPetTypes = this.pets.findGenderTypes();
-		for (Gender type : findPetTypes) {
+		Collection<Gender> genderTypes = this.patients.findGenderTypes();
+		for (Gender type : genderTypes) {
 			if (type.getName().equals(text)) {
 				return type;
 			}
 		}
-		throw new ParseException("type not found: " + text, 0);
+		throw new ParseException("Gender not found: " + text, 0);
 	}
 
 }

@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.springframework.samples.petclinic.doctor;
+package medicalclinic.doctor;
 
 import org.springframework.util.StringUtils;
 import org.springframework.validation.Errors;
@@ -29,7 +29,7 @@ import org.springframework.validation.Validator;
  * @author Ken Krebs
  * @author Juergen Hoeller
  */
-public class PetValidator implements Validator {
+public class PatientValidator implements Validator {
 
 	private static final String REQUIRED = "required";
 
