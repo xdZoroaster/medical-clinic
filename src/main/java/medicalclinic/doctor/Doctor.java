@@ -103,12 +103,7 @@ public class Doctor extends Person {
         patient.setDoctor(this);
     }
 
-    /**
-     * Return the Patient with the given name, or null if none found for this Doctor.
-     *
-     * @param name to test
-     * @return true if pet name is already in use
-     */
+
     public Patient getPatient(String name) {
         return getPatient(name, false);
     }

@@ -5,7 +5,7 @@
 
   <h2>
     <th:block th:if="${patient['new']}">New </th:block>
-    Pet
+    Patient
   </h2>
   <form th:object="${patient}" class="form-horizontal" method="post">
     <input type="hidden" name="id" th:value="*{id}" />
