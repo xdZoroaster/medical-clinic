@@ -15,7 +15,7 @@
         <td><b th:text="*{firstName + ' ' + lastName}"></b></td>
       </tr>
       <tr>
-        <th>Specializmi</th>
+        <th>Field of Study</th>
         <td th:text="*{address}" /></td>
       </tr>
       <tr>
@@ -66,10 +66,10 @@
             </tr>
             <tr>
               <td><a
-                th:href="@{{ownerId}/patients/{patientId}/edit(ownerId=${doctor.id},patientId=${patient.id})}">Edit
+                th:href="@{{doctorId}/patients/{patientId}/edit(doctorId=${doctor.id},patientId=${patient.id})}">Edit
                   Patient</a></td>
               <td><a
-                th:href="@{{ownerId}/patients/{patientId}/visits/new(ownerId=${doctor.id},patientId=${patient.id})}">Add
+                th:href="@{{doctorId}/patients/{patientId}/visits/new(doctorId=${doctor.id},patientId=${patient.id})}">Add
                   Visit</a></td>
             </tr>
           </table>

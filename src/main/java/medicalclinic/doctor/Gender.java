@@ -13,28 +13,15 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.springframework.samples.petclinic.model;
+package medicalclinic.doctor;
 
-import javax.persistence.Column;
-import javax.persistence.MappedSuperclass;
+import javax.persistence.Entity;
+import javax.persistence.Table;
 
-@MappedSuperclass
-public class NamedEntity extends BaseEntity {
+import medicalclinic.model.NamedEntity;
 
-	@Column(name = "name")
-	private String name;
-
-	public String getName() {
-		return this.name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	@Override
-	public String toString() {
-		return this.getName();
-	}
+@Entity
+@Table(name = "gender")
+public class Gender extends NamedEntity {
 
 }

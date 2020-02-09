@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.springframework.samples.petclinic.doctor;
+package medicalclinic.doctor;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -31,11 +31,11 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
+import medicalclinic.visit.Visit;
 import org.springframework.beans.support.MutableSortDefinition;
 import org.springframework.beans.support.PropertyComparator;
 import org.springframework.format.annotation.DateTimeFormat;
-import org.springframework.samples.petclinic.model.NamedEntity;
-import org.springframework.samples.petclinic.visit.Visit;
+import medicalclinic.model.NamedEntity;
 
 @Entity
 @Table(name = "patients")

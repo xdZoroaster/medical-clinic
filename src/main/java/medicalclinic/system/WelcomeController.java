@@ -14,22 +14,17 @@
  * limitations under the License.
  */
 
-package org.springframework.samples.petclinic;
+package medicalclinic.system;
 
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 
-/**
- * MedicalClinic Spring Boot Application.
- *
- * @author Ermir Metani Mikel Mata
- *
- */
-@SpringBootApplication(proxyBeanMethods = false)
-public class MedicalClinicApplication {
+@Controller
+class WelcomeController {
 
-	public static void main(String[] args) {
-		SpringApplication.run(MedicalClinicApplication.class, args);
+	@GetMapping("/")
+	public String welcome() {
+		return "welcome";
 	}
 
 }
